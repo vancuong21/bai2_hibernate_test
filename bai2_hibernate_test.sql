@@ -12,3 +12,15 @@ alter table product
 select * from testtable;
 select * from student;
 drop table testtable;
+
+create table studentSeq(
+	next_val bigint
+);
+insert into studentSeq(next_val) values(100);
+select * from studentSeq;
+drop table studentSeq;
+
+update studentSeq set next_val = next_val + 1;
+
+
+select * from billdetail;

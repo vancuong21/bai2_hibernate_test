@@ -1,5 +1,6 @@
 package com.vancuong.utils;
 
+import com.vancuong.entity.BillDetail;
 import com.vancuong.entity.ProductEntity;
 import com.vancuong.entity.Student;
 import com.vancuong.entity.TestTable;
@@ -15,6 +16,7 @@ public class HibernateUtils {
         configuration.addAnnotatedClass(ProductEntity.class);
         configuration.addAnnotatedClass(TestTable.class);
         configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(BillDetail.class);
         // thêm nhiều class dưới dây
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

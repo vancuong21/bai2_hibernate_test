@@ -1,5 +1,6 @@
 package com.vancuong.main;
 
+import com.vancuong.entity.BillDetail;
 import com.vancuong.entity.ProductEntity;
 import com.vancuong.entity.Student;
 import com.vancuong.entity.TestTable;
@@ -7,19 +8,30 @@ import com.vancuong.enumurations.ProductStatus;
 import com.vancuong.repository.ProductRepository;
 import com.vancuong.utils.HibernateUtils;
 import org.hibernate.Session;
+
 import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.printf("%05d", 12);
         Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-        for (int i = 0; i< 50; i++) {
-            Student testTable = new Student();
-            testTable.setName("st 1");
-            session.saveOrUpdate(testTable);
-        }
+        BillDetail billDetail = new BillDetail();
+        billDetail.setBullId(1);
+        billDetail.setQuantity(10);
+        billDetail.setProductPrice(99.99);
+        billDetail.setProductId(1);
+        session.saveOrUpdate(billDetail);
         session.getTransaction().commit();
+
+//        System.out.printf("%05d", 12);
+//        Session session = HibernateUtils.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        for (int i = 0; i< 50; i++) {
+//            Student testTable = new Student();
+//            testTable.setName("st 1");
+//            session.saveOrUpdate(testTable);
+//        }
+//        session.getTransaction().commit();
 
         // student generator
         // Session session = HibernateUtils.getSessionFactory().openSession();
