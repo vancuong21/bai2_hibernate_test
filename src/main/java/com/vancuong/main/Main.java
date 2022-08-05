@@ -1,27 +1,44 @@
 package com.vancuong.main;
 
-import com.vancuong.entity.BillDetail;
-import com.vancuong.entity.ProductEntity;
-import com.vancuong.entity.Student;
-import com.vancuong.entity.TestTable;
+import com.vancuong.entity.*;
 import com.vancuong.enumurations.ProductStatus;
+import com.vancuong.repository.CategoryRepository;
 import com.vancuong.repository.ProductRepository;
 import com.vancuong.utils.HibernateUtils;
 import org.hibernate.Session;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        BillDetail billDetail = new BillDetail();
-        billDetail.setBullId(1);
-        billDetail.setQuantity(10);
-        billDetail.setProductPrice(99.99);
-        billDetail.setProductId(1);
-        session.saveOrUpdate(billDetail);
-        session.getTransaction().commit();
+//        Optional<CategoryEntity> category = CategoryRepository.findByName("Dien tu");
+////        System.out.println(test);
+//        List<ProductEntity> products = ProductRepository.findAllProduct();
+//
+//        for (ProductEntity product : products) {
+//            if (category.isPresent()) {
+//                product.setCategory(category.get());
+//            }
+//            ProductRepository.saveOrUpdate(product);
+//            System.out.println(product);
+//        }
+        List<ProductEntity> products = ProductRepository.findByName("San pham 4");
+        for (ProductEntity product : products) {
+            System.out.println(product.getCategory().getName());
+        }
+
+
+//        Session session = HibernateUtils.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        BillDetail billDetail = new BillDetail();
+//        billDetail.setBullId(1);
+//        billDetail.setQuantity(10);
+//        billDetail.setProductPrice(99.99);
+//        billDetail.setProductId(1);
+//        session.saveOrUpdate(billDetail);
+//        session.getTransaction().commit();
 
 //        System.out.printf("%05d", 12);
 //        Session session = HibernateUtils.getSessionFactory().openSession();

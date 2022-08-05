@@ -2,7 +2,9 @@ package com.vancuong.repository;
 
 import com.vancuong.entity.ProductEntity;
 import com.vancuong.utils.HibernateUtils;
+
 import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -31,21 +33,30 @@ public class ProductRepository {
     }
 
     // save or update
-    public static ProductEntity saveOrUpdate(ProductEntity product) {
+    public static ProductEntity saveOrUpdate(ProductEntity productEntity) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         session.getTransaction().begin();
-        session.saveOrUpdate(product);
+        session.saveOrUpdate(productEntity);
 
         session.getTransaction().commit();
-        return product;
+        return productEntity;
     }
 
     // delete
-    public static ProductEntity delete(ProductEntity product) {
+    public static ProductEntity delete(ProductEntity productEntity) {
+
         Session session = HibernateUtils.getSessionFactory().openSession();
+
         session.getTransaction().begin();
-        session.delete(product);
+        session.delete(productEntity);
+
         session.getTransaction().commit();
-        return product;
+        return productEntity;
+    }
+
+    public static List<ProductEntity> findAllProduct() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        return session.createQuery("from ProductEntity ", ProductEntity.class)
+                .getResultList();
     }
 }

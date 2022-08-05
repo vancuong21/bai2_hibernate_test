@@ -4,23 +4,66 @@ use bai2_hibernate_test;
 
 drop table product;
 
-select * from product;
+SELECT * FROM product;
 
 alter table product
     drop column status;
 
-select * from testtable;
-select * from student;
+SELECT * FROM testtable;
+SELECT * FROM student;
 drop table testtable;
 
-create table studentSeq(
-	next_val bigint
+CREATE TABLE studentSeq (
+    next_val BIGINT
 );
-insert into studentSeq(next_val) values(100);
-select * from studentSeq;
+insert into studentSeq(next_val)
+values (100);
+SELECT 
+    *
+FROM
+    studentSeq;
 drop table studentSeq;
 
-update studentSeq set next_val = next_val + 1;
+UPDATE studentSeq 
+SET 
+    next_val = next_val + 1;
 
 
-select * from billdetail;
+SELECT 
+    *
+FROM
+    billdetail;
+
+insert into category(name)
+values ('Thịt, Rau Củ'),
+       ('Bách Hóa'),
+       ('Nhà Cửa'),
+       ('Điện Tử'),
+       ('Thiết Bị Số'),
+       ('Điện Thoại'),
+       ('Mẹ & Bé'),
+       ('Làm Đẹp'),
+       ('Gia Dụng'),
+       ('Thời trang nữ'),
+       ('Thời trang nam'),
+       ('Giày nữ'),
+       ('Túi nữ'),
+       ('Giày nam'),
+       ('Túi nam'),
+       ('Balo & Vali'),
+       ('Phụ kiện'),
+       ('Đồng hồ'),
+       ('Laptop'),
+       ('Quốc Tế'),
+       ('Voucher'),
+       ('XeSách'),
+       ('Thể Thao'),
+       ('Máy Ảnh');
+
+SELECT * FROM product
+INNER JOIN
+	category c ON product.category_id = c.id;
+    
+
+
+
